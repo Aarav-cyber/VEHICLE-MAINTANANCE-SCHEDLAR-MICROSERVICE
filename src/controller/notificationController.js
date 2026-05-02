@@ -16,11 +16,11 @@ async function z(req, res, next) {
 
     const c = a.notifications.map((d) => {
 
-      const e = b[d.type] || 0;
+      const e = b[d.Type] || 0;
 
-      const f =
-        e * 100000 +
-        new Date(d.createdAt).getTime();
+    const f =
+    e * 100000 +
+    new Date(d.Timestamp).getTime();
 
       return {
         ...d,
@@ -30,9 +30,7 @@ async function z(req, res, next) {
 
     c.sort((d, e) => e.score - d.score);
 
-    const g = c
-      .filter((d) => !d.isRead)
-      .slice(0, 10);
+    const g = c.slice(0, 10);
 
     await y(
       "backend",
