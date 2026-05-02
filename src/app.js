@@ -8,6 +8,7 @@ const z = require("./middleware/errorMiddleware");
 
 const a = require("./route/vehicleRoute");
 
+const c = require("./route/notificationRoute");
 const b = express();
 
 b.use(express.json());
@@ -25,6 +26,7 @@ b.get("/", (req, res) => {
 b.use("/api", x);
 
 b.use("/api", a);
+b.use("/api", c);
 
 b.use(z);
 
