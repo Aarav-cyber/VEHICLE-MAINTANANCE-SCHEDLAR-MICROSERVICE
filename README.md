@@ -1,50 +1,68 @@
-# API Endpoints
+# Backend Assignment
 
-## Health check
+Minimal Node.js Express backend for vehicle maintenance scheduling.
+
+## Install
+
+```bash
+npm install
+```
+
+## Run
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+node src/server.js
+```
+
+## Config
+
+Create `.env` in the project root with:
+
+```env
+PORT=3000
+ACCESS_TOKEN=
+```
+
+`ACCESS_TOKEN` is required for the endpoints that fetch data from the evaluation server.
+
+## API Endpoints
+
+### Health check
 
 - `GET /`
-- Response:
+- Returns server status.
 
-```json
-{
-  "success": true,
-  "message": "server running"
-}
-```
-
-## Users
+### Users
 
 - `GET /api/users`
-- Response:
+- Returns an empty user list.
 
-```json
-{
-  "success": true,
-  "data": []
-}
-```
-
-## Depot data
+### Depot data
 
 - `GET /api/depot`
-- Fetches depots from the evaluation server.
+- Fetches depot list from the evaluation server.
 
-## Vehicles
+### Vehicles
 
 - `GET /api/vehicles`
-- Fetches vehicles from the evaluation server.
+- Fetches vehicle list from the evaluation server.
 
-## Schedule
+### Schedule
 
 - `GET /api/schedule/:id`
-- Example: `GET /api/schedule/1`
-- Response includes:
-  - `depotId`
-  - `mechanicHours`
-  - `maxImpact`
-  - `usedHours`
-  - `selectedTasks`
+- Builds a schedule for the requested depot.
+- Response includes `depotId`, `mechanicHours`, `maxImpact`, `usedHours`, and `selectedTasks`.
 
-## Notes
+## Registration
 
-- `GET /api/depot`, `GET /api/vehicles`, and `GET /api/schedule/:id` require the evaluation server access token to work correctly.
+Run this helper to register and retrieve client credentials:
+
+```bash
+node src/service/registerService.js
+```
